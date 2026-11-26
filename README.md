@@ -4,7 +4,7 @@
 
 [中文](README_CN.md) | English
 
-Agent skills for requirement analysis, task handoff, Python-to-Rust optimization and engineering PR review. The first version adapts workflows from `alexstocks/arch-practice/alg/openclaw` into focused entrypoints with references loaded by role, stage and risk.
+Agent skills for requirement analysis, task handoff, Python-to-Rust optimization and engineering PR review. The skills provide focused entrypoints with references loaded by role, stage and risk.
 
 This is a community repository under the Dubbogo GitHub organization. It does not claim ASF project status or endorsement. Apache-2.0 is the license, not a project-status designation.
 

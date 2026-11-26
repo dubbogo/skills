@@ -4,7 +4,7 @@
 
 中文 | [English](README.md)
 
-面向需求分析、任务交接、Python 项目 Rust 优化与工程化 PR 审查的 agent 技能。第一版将 `alexstocks/arch-practice/alg/openclaw` 中的流程转为简短入口，按角色、阶段和风险加载参考资料。
+面向需求分析、任务交接、Python 项目 Rust 优化与工程化 PR 审查的 agent 技能。技能提供简短入口，按角色、阶段和风险加载参考资料。
 
 这是 Dubbogo GitHub 组织下的社区仓库，不宣称属于 ASF 项目或获得 ASF 背书。Apache-2.0 表示许可证，不表示项目归属。
 
