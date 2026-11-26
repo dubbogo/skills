@@ -1,11 +1,10 @@
 Dubbogo Skills
 Copyright 2026 Dubbogo Skills contributors
 
-Workflow material adapted from alexstocks/arch-practice, alg/openclaw,
-including issue-harness.md, pc-rust.md, review.md, review-experience.md,
-and repository-specific review documents supplied for this conversion.
-Source identity and modifications are recorded in docs/provenance.md
-and docs/source-manifest.json.
+Workflow material adapted from architecture workflow documents supplied by
+the maintainers, including requirement, migration and review materials.
+Transformation scope and maintenance boundaries are recorded in
+docs/provenance.md and docs/source-manifest.json.
 
 Apache, Apache Software Foundation, Apache Dubbo and related marks
 belong to their respective owners. This repository does not claim ASF

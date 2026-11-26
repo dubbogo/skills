@@ -1,105 +1,21 @@
 {
   "imported_at": "2026-11-26",
-  "source_repository": "https://github.com/alexstocks/arch-practice",
-  "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
+  "source_description": "Maintainer-provided architecture workflow materials",
   "files": [
     {
-      "source": "alg/openclaw/issue-harness.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
+      "material": "requirement and task-handoff workflows",
       "working_tree_sha256": "e8f4291a4bfd0a7a4c7add7c0f35821a9a42cf9ea30eb57a49b231b23e3b9fd1",
-      "base_blob_sha256": "e8f4291a4bfd0a7a4c7add7c0f35821a9a42cf9ea30eb57a49b231b23e3b9fd1",
-      "modified_from_base": false
+      "modified_from_input": false
     },
     {
-      "source": "alg/openclaw/pc-rust.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
+      "material": "Python-to-Rust migration workflows",
       "working_tree_sha256": "e12f83b4eefd52fd9d4ae97041eca781eabd0eb951384b84df7aed50f7728d73",
-      "base_blob_sha256": "bff0944c543e4637a06384bdb96c4f9cb662a50a0d7379236234b5070d1e9919",
-      "modified_from_base": true
+      "modified_from_input": true
     },
     {
-      "source": "alg/openclaw/review.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
+      "material": "pull-request review workflows",
       "working_tree_sha256": "84be0c11190aef04da5996d32f7769d9717e30efec4ef06be982aa3d86e57d54",
-      "base_blob_sha256": "84be0c11190aef04da5996d32f7769d9717e30efec4ef06be982aa3d86e57d54",
-      "modified_from_base": false
-    },
-    {
-      "source": "alg/openclaw/review-experience.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
-      "working_tree_sha256": "1a356172b2d2b882f39788a0db443c0edec059299abb92ab1702639f5d4b5f90",
-      "base_blob_sha256": "80adf300256ef334155f34b719c9c68ffdb67ed15ff0d4e31aab79cbf8ce5cce",
-      "modified_from_base": true
-    },
-    {
-      "source": "alg/openclaw/review-AlexStocks-getty.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
-      "working_tree_sha256": "228332a800c984689d78d315feb0c7764eb1f6e75713cd86f200d54cf01ad781",
-      "base_blob_sha256": "228332a800c984689d78d315feb0c7764eb1f6e75713cd86f200d54cf01ad781",
-      "modified_from_base": false
-    },
-    {
-      "source": "alg/openclaw/review-apache-dubbo-admin.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
-      "working_tree_sha256": "6ea512579fb51763140c88b7503310332698e74e62796a82b96fca92aeb7ede0",
-      "base_blob_sha256": "6ea512579fb51763140c88b7503310332698e74e62796a82b96fca92aeb7ede0",
-      "modified_from_base": false
-    },
-    {
-      "source": "alg/openclaw/review-apache-dubbo-getty.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
-      "working_tree_sha256": "234651cc9ae0219dff3fecdc762c08b85ad1b6fc9510a32d875792cff577bf66",
-      "base_blob_sha256": "234651cc9ae0219dff3fecdc762c08b85ad1b6fc9510a32d875792cff577bf66",
-      "modified_from_base": false
-    },
-    {
-      "source": "alg/openclaw/review-apache-dubbo-go-pixiu-samples.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
-      "working_tree_sha256": "2daaa4f057abb9b67d0211df609aa0ebdfef06aa4dc80cbda1de3d310f4f3ef7",
-      "base_blob_sha256": "2daaa4f057abb9b67d0211df609aa0ebdfef06aa4dc80cbda1de3d310f4f3ef7",
-      "modified_from_base": false
-    },
-    {
-      "source": "alg/openclaw/review-apache-dubbo-go-pixiu.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
-      "working_tree_sha256": "ef06bdd50bc16a07c269dbdfe80670896cdd2afba136b5acbe33e7e2f443481e",
-      "base_blob_sha256": "ef06bdd50bc16a07c269dbdfe80670896cdd2afba136b5acbe33e7e2f443481e",
-      "modified_from_base": false
-    },
-    {
-      "source": "alg/openclaw/review-apache-dubbo-go-samples.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
-      "working_tree_sha256": "0e0a86962a9e6fc669064f01e7265a7107ee414daef17d2c34d7e3f107500ea1",
-      "base_blob_sha256": "0e0a86962a9e6fc669064f01e7265a7107ee414daef17d2c34d7e3f107500ea1",
-      "modified_from_base": false
-    },
-    {
-      "source": "alg/openclaw/review-apache-dubbo-go.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
-      "working_tree_sha256": "b36a99e7b126887741d9fc52e78827c7870f8b433715ca0b74216053e194fce6",
-      "base_blob_sha256": "b36a99e7b126887741d9fc52e78827c7870f8b433715ca0b74216053e194fce6",
-      "modified_from_base": false
-    },
-    {
-      "source": "alg/openclaw/review-arana-db-kiwi.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
-      "working_tree_sha256": "c065c12ce404135ffe973da9950f17ea05e58e4a5e4dbc0b719457616d87c3ea",
-      "base_blob_sha256": "c065c12ce404135ffe973da9950f17ea05e58e4a5e4dbc0b719457616d87c3ea",
-      "modified_from_base": false
-    },
-    {
-      "source": "alg/openclaw/review-dubbogo-gost.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
-      "working_tree_sha256": "ca18b3e943618874c02f476bb6e097a85bbd514880905ebd19d4601d8ede7b24",
-      "base_blob_sha256": "ca18b3e943618874c02f476bb6e097a85bbd514880905ebd19d4601d8ede7b24",
-      "modified_from_base": false
-    },
-    {
-      "source": "alg/openclaw/review-oceanbase-powercontext.md",
-      "base_commit": "9442590dba504fd8d2dcc093377afd13488226ae",
-      "working_tree_sha256": "a1a9772913adbd66cff8c63d57eb2a10776fcf15361cadfb6c557b4b14fb3e37",
-      "base_blob_sha256": "29f7330486667082bf440d70eca6e7fc97831de0956143c1d2a4573906099251",
-      "modified_from_base": true
+      "modified_from_input": false
     }
   ]
 }
