@@ -1,0 +1,6 @@
+interface:
+  display_name: "Python to Rust Optimization"
+  short_description: "Profile Python workloads and validate Rust migrations"
+  default_prompt: "使用 $py2rust 分析当前 Python 仓库并提出首个 Rust 优化单元计划。"
+policy:
+  allow_implicit_invocation: true
