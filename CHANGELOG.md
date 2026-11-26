@@ -6,7 +6,8 @@
 
 ## Unreleased
 
-- Add three standalone skills for Task Issue handoff, Python-to-Rust optimization and engineering PR review.
+- Add three standalone skills for Task Issue handoff, Python-to-Rust optimization and PR review.
+- Rename the pull request review skill to `pr-review`.
 - Rename the Python-to-Rust skill to `py2rust` and make its project settings repository-specific.
 - Split workflow references; preserve review rule IDs and index 10 repository profiles and historical diagnoses.
 - Retire conflicting historical thread instructions and record source hashes and working-tree revisions.

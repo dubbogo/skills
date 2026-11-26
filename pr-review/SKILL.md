@@ -1,5 +1,5 @@
 ---
-name: engineering-pr-review
+name: pr-review
 description: Use when reviewing a GitHub pull request, re-reviewing an updated Head, reconciling earlier findings, or assessing current merge readiness under an engineering review protocol. 适用于有证据的 PR 审查与复审；仅本地代码修改不自动触发完整 PR 流程。
 license: Apache-2.0
 ---

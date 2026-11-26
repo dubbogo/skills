@@ -14,7 +14,7 @@
 |---|---|---|
 | [task-issue-harness](task-issue-harness/SKILL.md) | 核实需求、拆 Task Issue、执行已批准契约 | 可审阅的契约与带证据的编码交接 |
 | [py2rust](py2rust/SKILL.md) | 分析或实施任意 Python 项目的 Python → Rust 单元 | 行为差分、原生路径、wheel 安装及性能证据 |
-| [engineering-pr-review](engineering-pr-review/SKILL.md) | PR 初审、更新复审、合并条件判断 | 当前快照的问题及获授权的行内评论 |
+| [pr-review](pr-review/SKILL.md) | PR 初审、更新复审、合并条件判断 | 当前快照的问题及获授权的行内评论 |
 
 Review 包含 10 个仓库的项目规则和历史诊断索引，分别匹配 fork 身份。诊断经验不自动增加检查门禁。
 
@@ -50,7 +50,7 @@ cp -R "./$skill_name" "$skill_root/$skill_name"
 使用 $task-issue-harness 核实需求，仅给出 Task Issue 草稿。
 使用 $task-issue-harness 执行已批准 Issue，沿用有效的权限与执行模式。
 使用 $py2rust 分析首个 Python 项目候选单元，先不实施。
-使用 $engineering-pr-review 审查这个 PR，仅本地报告，不发评论。
+使用 $pr-review 审查这个 PR，仅本地报告，不发评论。
 ```
 
 自动发现技能不增加发布、推送、合并或部署权限。遵循当前用户指令，复用有效的既有授权；审查只选一份通用协议，不叠加冲突旧技能。Harness 保留契约批准与执行模式开工条件。

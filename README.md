@@ -4,7 +4,7 @@
 
 [中文](README_CN.md) | English
 
-Agent skills for requirement analysis, task handoff, Python-to-Rust optimization and engineering PR review. The skills provide focused entrypoints with references loaded by role, stage and risk.
+Agent skills for requirement analysis, task handoff, Python-to-Rust optimization and pull request review. The skills provide focused entrypoints with references loaded by role, stage and risk.
 
 This is a community repository under the Dubbogo GitHub organization. It does not claim ASF project status or endorsement. Apache-2.0 is the license, not a project-status designation.
 
@@ -14,7 +14,7 @@ This is a community repository under the Dubbogo GitHub organization. It does no
 |---|---|---|
 | [task-issue-harness](task-issue-harness/SKILL.md) | Clarifying requirements, preparing Task Issues, or implementing approved contracts | Reviewable contracts and evidence-bound handoffs |
 | [py2rust](py2rust/SKILL.md) | Analyzing or executing Python-to-Rust optimization units in any Python repository | Semantic, native-path, installed-wheel and performance evidence |
-| [engineering-pr-review](engineering-pr-review/SKILL.md) | Reviewing PRs, updated Heads and merge readiness | Current-snapshot findings and authorized inline comments |
+| [pr-review](pr-review/SKILL.md) | Reviewing PRs, updated Heads and merge readiness | Current-snapshot findings and authorized inline comments |
 
 The review package indexes 10 repository profiles and historical diagnostic material. Fork identities remain separate. Diagnostic experience does not automatically add mandatory checks.
 
@@ -50,7 +50,7 @@ These examples refuse to replace an existing installation. Use your runtime's co
 Use $task-issue-harness to prepare Task Issue drafts only for this requirement.
 Use $task-issue-harness to implement the approved Issue using its existing authorization.
 Use $py2rust to assess a first Python-to-Rust unit; do not implement yet.
-Use $engineering-pr-review to review this PR locally without posting comments.
+Use $pr-review to review this PR locally without posting comments.
 ```
 
 Automatic discovery does not grant permission to publish, push, merge or deploy. Preserve current user instructions and valid prior authorization. Select one review protocol rather than stacking conflicting legacy review skills. The harness retains explicit contract approval and execution-mode gates.
