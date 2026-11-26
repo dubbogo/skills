@@ -1,0 +1,6 @@
+interface:
+  display_name: "PowerContext Rust 迁移"
+  short_description: "按行为单元迁移 PowerContext，验证原生路径、差分、安装与性能"
+  default_prompt: "使用 $powercontext-rust-migration 分析当前仓库并提出首个迁移单元计划。"
+policy:
+  allow_implicit_invocation: true
