@@ -18,6 +18,8 @@ This is a community repository under the Dubbogo GitHub organization. It does no
 
 The review package indexes 10 repository profiles and historical diagnostic material. Fork identities remain separate. Diagnostic experience does not automatically add mandatory checks.
 
+When `REVIEW_ROOT` is unset, PR review mirrors use `~/pr-review` by default (Windows: `%USERPROFILE%\pr-review`). Set it to use another task-specific location.
+
 ## Installation
 
 Clone this repository, then copy the **whole directory** of a selected skill into your runtime's supported discovery directory. For example, run from the clone root:

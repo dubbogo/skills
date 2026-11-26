@@ -19,11 +19,14 @@
 
 ### 13.4 各平台镜像根路径 `{REVIEW_ROOT}`
 
-以下是本机路径约定，不是跨机器默认值。调用环境可指定其他任务专属目录，使用前确认路径存在或可创建，并按 `R03` 划分职责。
+显式提供的非空 `{REVIEW_ROOT}` 优先使用。变量缺失或为空时，默认使用当前用户 home 下的 `pr-review/`；调用环境也可传入其他任务专属目录。根目录及本 PR 子目录不存在时按需创建；若目标不可写或创建失败，停止 checkout 并报告阻塞，不静默改用其他位置。按 `R03` 在根目录下划分职责。
 
 | 平台 | 取值 |
 |---|---|
-| Windows / WSL / Linux / macOS | 由调用环境传入 `{REVIEW_ROOT}`；本协议不预设用户目录或本机绝对路径。 |
+| Windows | `%USERPROFILE%\pr-review` |
+| WSL / Linux / macOS | `$HOME/pr-review` |
+
+在默认根目录下，每个 PR 使用 `{REVIEW_ROOT}/[owner]-[repo]-pr-[PR_NO]`。WSL 使用运行该任务的 Linux 用户 home；Windows 使用当前 Windows 用户的 profile。
 
 ### 13.5 环境资料的时效性
 

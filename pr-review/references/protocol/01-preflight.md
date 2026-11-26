@@ -57,7 +57,7 @@ PR 状态为 MERGED/CLOSED，停止审查。
 
 ### R03. 独立镜像
 
-不得在用户当前开发目录 checkout PR。每个 PR 使用独立镜像，根路径由调用环境通过 `{REVIEW_ROOT}` 指定（各平台取值见 §13）：
+不得在用户当前开发目录 checkout PR。每个 PR 使用独立镜像。调用环境提供非空 `{REVIEW_ROOT}` 时使用指定路径；未提供或为空时使用当前用户 home 下的 `pr-review/`（各平台取值见 §13）。缺失的根目录按需创建；无法创建时停止该 PR 的 checkout 并报告阻塞，不回退到其他目录：
 
 ```text
 {REVIEW_ROOT}/[owner]-[repo]-pr-[PR_NO]
