@@ -4,7 +4,7 @@
 
 [中文](README_CN.md) | English
 
-Agent skills for requirement analysis, task handoff, PowerContext Rust migration and engineering PR review. The first version adapts workflows from `alexstocks/arch-practice/alg/openclaw` into focused entrypoints with references loaded by role, stage and risk.
+Agent skills for requirement analysis, task handoff, Python-to-Rust optimization and engineering PR review. The first version adapts workflows from `alexstocks/arch-practice/alg/openclaw` into focused entrypoints with references loaded by role, stage and risk.
 
 This is a community repository under the Dubbogo GitHub organization. It does not claim ASF project status or endorsement. Apache-2.0 is the license, not a project-status designation.
 
@@ -13,7 +13,7 @@ This is a community repository under the Dubbogo GitHub organization. It does no
 | Skill | Use when | Deliverable |
 |---|---|---|
 | [task-issue-harness](task-issue-harness/SKILL.md) | Clarifying requirements, preparing Task Issues, or implementing approved contracts | Reviewable contracts and evidence-bound handoffs |
-| [powercontext-rust-migration](powercontext-rust-migration/SKILL.md) | Analyzing or executing PowerContext Python-to-Rust units | Semantic, native-path, installed-wheel and performance evidence |
+| [py2rust](py2rust/SKILL.md) | Analyzing or executing Python-to-Rust optimization units in any Python repository | Semantic, native-path, installed-wheel and performance evidence |
 | [engineering-pr-review](engineering-pr-review/SKILL.md) | Reviewing PRs, updated Heads and merge readiness | Current-snapshot findings and authorized inline comments |
 
 The review package indexes 10 repository profiles and historical diagnostic material. Fork identities remain separate. Diagnostic experience does not automatically add mandatory checks.
@@ -49,7 +49,7 @@ These examples refuse to replace an existing installation. Use your runtime's co
 ```text
 Use $task-issue-harness to prepare Task Issue drafts only for this requirement.
 Use $task-issue-harness to implement the approved Issue using its existing authorization.
-Use $powercontext-rust-migration to assess a first unit; do not implement yet.
+Use $py2rust to assess a first Python-to-Rust unit; do not implement yet.
 Use $engineering-pr-review to review this PR locally without posting comments.
 ```
 

@@ -4,7 +4,7 @@
 
 中文 | [English](README.md)
 
-面向需求分析、任务交接、PowerContext Rust 迁移与工程化 PR 审查的 agent 技能。第一版将 `alexstocks/arch-practice/alg/openclaw` 中的流程转为简短入口，按角色、阶段和风险加载参考资料。
+面向需求分析、任务交接、Python 项目 Rust 优化与工程化 PR 审查的 agent 技能。第一版将 `alexstocks/arch-practice/alg/openclaw` 中的流程转为简短入口，按角色、阶段和风险加载参考资料。
 
 这是 Dubbogo GitHub 组织下的社区仓库，不宣称属于 ASF 项目或获得 ASF 背书。Apache-2.0 表示许可证，不表示项目归属。
 
@@ -13,7 +13,7 @@
 | 技能 | 使用场景 | 交付物 |
 |---|---|---|
 | [task-issue-harness](task-issue-harness/SKILL.md) | 核实需求、拆 Task Issue、执行已批准契约 | 可审阅的契约与带证据的编码交接 |
-| [powercontext-rust-migration](powercontext-rust-migration/SKILL.md) | 分析或实施 PowerContext 的 Python → Rust 单元 | 行为差分、原生路径、wheel 安装及性能证据 |
+| [py2rust](py2rust/SKILL.md) | 分析或实施任意 Python 项目的 Python → Rust 单元 | 行为差分、原生路径、wheel 安装及性能证据 |
 | [engineering-pr-review](engineering-pr-review/SKILL.md) | PR 初审、更新复审、合并条件判断 | 当前快照的问题及获授权的行内评论 |
 
 Review 包含 10 个仓库的项目规则和历史诊断索引，分别匹配 fork 身份。诊断经验不自动增加检查门禁。
@@ -49,7 +49,7 @@ cp -R "./$skill_name" "$skill_root/$skill_name"
 ```text
 使用 $task-issue-harness 核实需求，仅给出 Task Issue 草稿。
 使用 $task-issue-harness 执行已批准 Issue，沿用有效的权限与执行模式。
-使用 $powercontext-rust-migration 分析首个候选单元，先不实施。
+使用 $py2rust 分析首个 Python 项目候选单元，先不实施。
 使用 $engineering-pr-review 审查这个 PR，仅本地报告，不发评论。
 ```
 

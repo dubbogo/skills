@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 <!-- Modified for the 2026-11-26 skill adaptation; see references/provenance.md (relative to the skill root) for source attribution and changes. -->
 
-# Rust 迁移参考索引
+# Python 项目 Rust 优化参考索引
 
 保留源文档节号；按当前单元风险加载。原文 `issue-harness.md` 的授权、契约与检查点方法在本包 [task-contract.md](task-contract.md) 中给出可独立执行的摘要；任务显式采用完整 harness 时仍以该任务选定的完整契约为准。原文 `review.md` 的证据方法在门禁与统计章节内落实，不自动开启 PR review。
 

@@ -3,9 +3,9 @@
 
 ## 7. 门禁与完成标准
 
-先从项目规则确定必须执行的检查，再为本单元列出“风险 → 命令 → 预期结果”。局部迭代先跑高信号检查，交付前补齐相关必需门禁；无关 gateway/desktop 全量测试不因新增 Python 扩展而自动成为门禁。
+先从项目规则确定必须执行的检查，再为本单元列出“风险 → 命令 → 预期结果”。局部迭代先跑高信号检查，交付前补齐相关必需门禁；不相关 workspace 或组件的全量测试不因新增 Rust 单元而自动成为门禁。
 
-Rust 命令指向**实际拥有该单元的 manifest**，不能默认指向 gateway。以下只是假设新 workspace 已确定为 `rust/Cargo.toml` 的模板；路径、crate 和工具链必须先落实：
+Rust 命令指向**实际拥有该单元的 manifest**。以下是 workspace 位于 `rust/Cargo.toml` 时的模板；路径、crate 和工具链必须先落实：
 
 ```text
 cargo fmt --manifest-path rust/Cargo.toml --all --check
@@ -18,18 +18,18 @@ rust-anything gate <crate>
 
 新 workspace 首次生成或有意更新锁文件属于依赖变更；核查后提交。后续构建、测试和 lint 使用 `--locked`，不得靠解锁绕过漂移。
 
-Python 命令按当前平台执行，先确认解释器、依赖及 `powercontext.__file__`。例如，相关测试集已经写入计划时：
+Python 命令按当前平台执行，先确认解释器、依赖及目标模块的导入路径。例如，相关测试集已经写入计划、Python 包名为 `sample_package` 时：
 
 ```powershell
 # Windows PowerShell；仅修改当前进程环境
 $env:PYTHONPATH = (Resolve-Path ./src).Path
-.venv\Scripts\python.exe -c "import powercontext; print(powercontext.__file__)"
+.venv\Scripts\python.exe -c "import sample_package; print(sample_package.__file__)"
 .venv\Scripts\python.exe -m pytest <相关测试路径> -q -rs
 ```
 
 ```bash
 # POSIX shell
-PYTHONPATH="$PWD/src" .venv/bin/python -c 'import powercontext; print(powercontext.__file__)'
+PYTHONPATH="$PWD/src" .venv/bin/python -c 'import sample_package; print(sample_package.__file__)'
 PYTHONPATH="$PWD/src" .venv/bin/python -m pytest <相关测试路径> -q -rs
 ```
 
@@ -43,7 +43,7 @@ PYTHONPATH="$PWD/src" .venv/bin/python -m pytest <相关测试路径> -q -rs
 
 - 相关既有测试在强制 Rust 路径通过；新增测试保护行为、选择后端和实际已构建产物。
 - 差分全部符合已批准契约，错误路径有覆盖；录制来源、比较规则和源码指纹有效。采用 Hypothesis 时附实际策略、预算、回放和回归样本；采用转译器时附生成与人工修正的来源，不把成功编译当成差分通过。
-- 获批主工具及替代验收方案的相关检查通过。采用 rust-anything 的既有 gate 要求仍须满足；其他工具没有同名命令时，在计划中明确对应检查及独立证据。工具不支持当前边界时列出缺口，不得伪称 gate 通过或自行取消已批准的完成条件，需先明确调整计划。
+- 获批主工具及替代验收方案的相关检查通过。若任务选定 rust-anything，则其既有 gate 要求仍须满足；其他工具没有同名命令时，在计划中明确对应检查及独立证据。工具不支持当前边界时列出缺口，不得伪称 gate 通过或自行取消已批准的完成条件，需先明确调整计划。
 - 请求或扩展入口的错误均被处理，不能因合法/非法外部输入 panic。优先 `Result` 和 `?`；`expect` 的不变量说明不是运行时安全证明。
 - 许可证、生成文件、依赖与锁文件、打包及相关项目检查符合当前仓库规则。
 - 含桥接成本的性能结果符合预先约定目标，或明确记录该单元仅为兼容性试点、尚未批准默认接入。

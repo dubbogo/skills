@@ -446,7 +446,7 @@ upgrade_release_gate.py 的 NOTICE 文案变更、或 releases.test.ts 唯一性
 - **对照判据**：同日 #2258（base `cdb8da29`）同一批 job 绿 ⇒ 排除基线；#2192 的 `fix27` 同时改了该文件 ⇒ 同仓已有正确做法。
 - **锚点选择**：PR 通常不碰 `release/upgrade-support.json`，直接把评论挂在新增 revision 的注册行
   （`migrations/server_resources/manifest.json` 的 `"vX_Y_Z_NNN": [`）即可满足 R11。
-- **反向场景（2026-10-28 实测，R39）**：PR **完全没碰** `MANAGED_INPUTS` 也会中同一签名——只要它的 base 早于上游修复。
+- **反向场景（2026-10-28 实测，R-PC54）**：PR **完全没碰** `MANAGED_INPUTS` 也会中同一签名——只要它的 base 早于上游修复。
   判别只需一步：算 **base** 的 `managed_digest` 并与声明值比对，**不相等即基线滞后，与 PR 无关**；此时要求作者 rebase，
   不要在 PR 内找缺陷。实测三例同批：`#2205` base `927bb6ee` → `f0a1d364…` ≠ 声明 `9b67d639…`（同 PR head `dfa6d6a5`
   31 文件全不含 `persistence/`、`server/identity.py`、`server/authz`、`limits.py`）；`#2278` head `57fc4d25` 仅 2 文件却红
