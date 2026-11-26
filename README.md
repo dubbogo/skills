@@ -69,12 +69,16 @@ Python 3.11+ is required only to validate the repository, not to use the skills.
 python -m venv .venv
 # Activate .venv using your shell, then:
 python -m pip install -r requirements-dev.txt
+python -m pip check
+python -m ruff check scripts tests
+python -m ruff format --check scripts tests
 python scripts/validate.py
 python -m unittest discover -s tests -v
+python -m scripts.package --output-dir dist
 git diff --check
 ```
 
-On Windows without activation, use `.venv\Scripts\python.exe` for subsequent Python commands. Checks cover package metadata, distribution files, fences, plain inline local links, and explicit rule/experience index anchors. Titled or reference-style links and general heading fragments are not validated; use plain inline links for package navigation. Checks do not execute workflows, verify remote URLs or prove agent behavior. CI is configured for Linux and Windows; remote success must be verified separately. See [offline scenarios](docs/validation.md) for behavioral changes.
+On Windows without activation, use `.venv\Scripts\python.exe` for subsequent Python commands. Checks cover package metadata, distribution files, fences, Markdown links, machine-path rejection, and explicit rule/experience index anchors. The package command builds and independently validates one zip per skill and writes `SHA256SUMS`. Checks do not execute workflows, verify remote URLs or prove agent behavior. CI runs the same gates on Linux and Windows with Python 3.11 and 3.14, uploads the validated packages, and checks the exact PR or pushed diff for whitespace errors. See [offline scenarios](docs/validation.md) for behavioral changes.
 
 ## Community and license
 

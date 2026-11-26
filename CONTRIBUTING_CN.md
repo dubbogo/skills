@@ -13,10 +13,12 @@
 ## 提交前
 
 1. 按 [README](README_CN.md) 准备 Python 环境。
-2. 运行 `python scripts/validate.py`、`python -m unittest discover -s tests -v`、`git diff --check`。
+2. 运行 `python -m pip check`、`python -m ruff check scripts tests`、`python -m ruff format --check scripts tests`、`python scripts/validate.py`、`python -m unittest discover -s tests -v`、`python -m scripts.package --output-dir dist`、`git diff --check`。
 3. 行为变化复测[离线场景](docs/validation.md)，有独立上下文时使用独立评估者，只提供原始请求与夹具，不提供预期答案。不为测试指令而操作真实远端资源。
 4. PR 说明结果行为、证据、限制和来源；中英文社区文档同步，技能参考正文当前为中文。
 
 结构校验不证明行为。搬移文本不等于复验旧 PR 或环境。阅读[来源说明](docs/provenance.md)，核实贡献权利并保留归属；新增第三方文本、资产、依赖需说明来源和许可证义务。
+
+必需工作流会在 Linux、Windows 以及 Python 3.11、3.14 组合上运行这些门禁。PR 按准确的 head 和 base 提交检查，推送按前一个提交检查。CI 会保留分发包七天，便于审阅。
 
 除明确另行说明外，贡献按 Apache-2.0 提交，且必须是有权贡献的内容。本仓库不建立 ASF CLA 流程，也不要求 ASF committer 身份。维护者审查行为与范围，CI 通过不自动授权合并。

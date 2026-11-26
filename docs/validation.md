@@ -30,8 +30,10 @@
 
 ## 结构与工具检查
 
-- `python scripts/validate.py`：检查三个包的名称、YAML、UI 调用、独立分发文件、Markdown 围栏、普通行内本地目标与显式规则/经验索引锚点，拒绝文档内重复显式锚点。暂不解析带标题或引用式链接、通用标题锚点。无网络、无产品执行。
-- `python -m unittest discover -s tests -v`：真实临时目录验证合法包、缺引用、逃逸包目录、目录/名称错配、未关闭围栏、代码示例不应被当链接、缺许可证、重复显式锚点和错误规则锚点，共 9 项。校验器最初缺实现而失败；另一次增加行内代码场景后真实失败，再修正通过。
+- `python scripts/validate.py`：检查三个包的名称、YAML、UI 调用、独立分发文件、Markdown 围栏、CommonMark 链接目标、机器路径与显式规则/经验索引锚点，拒绝文档内重复显式锚点。使用 Markdown 解析器覆盖带标题和引用式链接；不校验通用标题锚点。无网络、无产品执行。
+- `python -m unittest discover -s tests -v`：真实临时目录验证合法包、缺引用、逃逸包目录、目录/名称错配、未关闭围栏、代码示例不应被当链接、缺许可证、重复显式锚点、错误规则锚点、带标题/引用式链接、机器路径、许可证漂移、错误 UI 元数据、缺入口和独立 zip 分发，共 17 项。每个新增校验先以失败夹具观察失败，再修正通过。
+- `python -m pip check`、`python -m ruff check scripts tests`、`python -m ruff format --check scripts tests`：依赖一致性、静态错误和 Python 格式门禁。
+- `python -m scripts.package --output-dir dist`：先校验源包，再为每个技能生成 zip、解压复验文件内容、独立校验、生成 `SHA256SUMS`；CI 在 Linux/Windows × Python 3.11/3.14 四个组合上传分发物，保留七天。禁止符号链接、路径逃逸和校验前生成部分产物。
 - skill-creator 自带 `quick_validate.py`：额外检查三份入口格式；它不验证行为。
 - 分发副本：将技能复制到独立临时根再校验，核对完整许可证，不依赖原工作台或 sibling 包。
 - `git diff --check`、固定来源摘要、协议 R ID 与 R-PC ID 对账，避免遗漏或改变历史验证日期。源文继承的 R-PC43/44/45 重号保留，但索引使用唯一后缀锚点并要求标题消歧。
@@ -39,7 +41,7 @@
 
 ## 尚未覆盖
 
-未做 live 宿主安装与自动发现验收、真实双 Agent 全流程、真实 Issue 发布或 PR 行内写入、PowerContext 原生构建与性能验收。未宣称复验 10 个仓库的所有历史规则，未逐个验证远端 URL。Linux/Windows CI 配置已提供，但远端 run 状态须在实际推送后核实；不能把本地检查或离线推演写成远端通过。
+未做 live 宿主安装与自动发现验收、真实双 Agent 全流程、真实 Issue 发布或 PR 行内写入、PowerContext 原生构建与性能验收。未宣称复验 10 个仓库的所有历史规则，未逐个验证远端 URL。Linux/Windows × Python 3.11/3.14 CI 配置已提供，但本次改动的远端 run 状态须在实际推送后核实；不能把本地检查或离线推演写成远端通过。
 
 ## 提交前独立审阅
 

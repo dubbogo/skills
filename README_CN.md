@@ -69,12 +69,16 @@ cp -R "./$skill_name" "$skill_root/$skill_name"
 python -m venv .venv
 # 按当前 shell 激活 .venv 后：
 python -m pip install -r requirements-dev.txt
+python -m pip check
+python -m ruff check scripts tests
+python -m ruff format --check scripts tests
 python scripts/validate.py
 python -m unittest discover -s tests -v
+python -m scripts.package --output-dir dist
 git diff --check
 ```
 
-Windows 不激活环境时，后续 Python 命令改用 `.venv\Scripts\python.exe`。校验覆盖元数据、分发文件、围栏、普通行内本地链接及显式规则/经验索引锚点；暂不校验带标题或引用式链接和通用标题片段，包导航采用普通行内链接。它不执行技能流程、不验证远端 URL，也不证明 agent 行为。CI 配置为 Linux、Windows，远端是否通过需另行核实。行为变化应复测[离线场景](docs/validation.md)。
+Windows 不激活环境时，后续 Python 命令改用 `.venv\Scripts\python.exe`。校验覆盖元数据、分发文件、围栏、Markdown 链接、机器路径拒绝及显式规则/经验索引锚点。打包命令为每个技能生成并独立复验 zip，同时写入 `SHA256SUMS`。它不执行技能流程、不验证远端 URL，也不证明 agent 行为。CI 在 Linux、Windows 及 Python 3.11、3.14 组合上运行相同门禁，上传已验证的包，并检查准确的 PR 或推送差异中的空白错误。行为变化应复测[离线场景](docs/validation.md)。
 
 ## 协作与许可证
 

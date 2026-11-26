@@ -4,8 +4,12 @@
 
 ## Validation and limits / 验证与限制
 
+- [ ] `python -m pip check`
+- [ ] `python -m ruff check scripts tests`
+- [ ] `python -m ruff format --check scripts tests`
 - [ ] `python scripts/validate.py`
 - [ ] `python -m unittest discover -s tests -v`
+- [ ] `python -m scripts.package --output-dir dist`
 - [ ] `git diff --check`
 - [ ] Applicable behavioral scenarios rerun, or non-applicability explained / 复测适用行为场景或说明不适用
 - [ ] English/Chinese community docs aligned when affected / 相关中英文社区文档同步
