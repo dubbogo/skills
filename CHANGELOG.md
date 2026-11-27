@@ -4,7 +4,7 @@
 
 [中文](CHANGELOG_CN.md) | English
 
-## Unreleased
+## v0.1.1 - 2026-11-27
 
 - Add three standalone skills for Task Issue handoff, Python-to-Rust optimization and PR review.
 - **Breaking:** rename the `task-issue-harness` skill to `task-issue`; remove the old installed directory and update `$task-issue-harness` invocations before upgrading.
@@ -15,4 +15,4 @@
 - Add offline validation, regression tests and Linux/Windows CI configuration.
 - Complete bilingual community documentation, unofficial Chinese license translation and package notices.
 
-This does not imply a release tag, remote CI success or real-task acceptance.
+Released as `v0.1.1` from `main`; this does not imply real-task acceptance.
