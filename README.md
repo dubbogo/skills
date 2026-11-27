@@ -12,7 +12,7 @@ This is a community repository under the Dubbogo GitHub organization. It does no
 
 | Skill | Use when | Deliverable |
 |---|---|---|
-| [task-issue-harness](task-issue-harness/SKILL.md) | Clarifying requirements, preparing Task Issues, or implementing approved contracts | Reviewable contracts and evidence-bound handoffs |
+| [task-issue](task-issue/SKILL.md) | Clarifying requirements, preparing Task Issues, or implementing approved contracts | Reviewable contracts and evidence-bound handoffs |
 | [py2rust](py2rust/SKILL.md) | Analyzing or executing Python-to-Rust optimization units in any Python repository | Semantic, native-path, installed-wheel and performance evidence |
 | [pr-review](pr-review/SKILL.md) | Reviewing PRs, updated Heads and merge readiness | Current-snapshot findings and authorized inline comments |
 
@@ -25,7 +25,7 @@ When `REVIEW_ROOT` is unset, PR review mirrors use `~/pr-review` by default (Win
 Clone this repository, then copy the **whole directory** of a selected skill into your runtime's supported discovery directory. For example, run from the clone root:
 
 ```powershell
-$skillName = 'task-issue-harness'
+$skillName = 'task-issue'
 $skillRoot = Join-Path $env:USERPROFILE '.agents\skills'
 $destination = Join-Path $skillRoot $skillName
 if (Test-Path -LiteralPath $destination) { throw "Already installed: $destination" }
@@ -34,7 +34,7 @@ Copy-Item -LiteralPath (Join-Path (Get-Location) $skillName) -Destination $desti
 ```
 
 ```sh
-skill_name=task-issue-harness
+skill_name=task-issue
 skill_root="$HOME/.agents/skills"
 mkdir -p "$skill_root"
 if [ -e "$skill_root/$skill_name" ]; then
@@ -44,13 +44,15 @@ fi
 cp -R "./$skill_name" "$skill_root/$skill_name"
 ```
 
+**Upgrading from `task-issue-harness`:** this release renames the skill directory. Remove the old `task-issue-harness` directory from your skill root before installing `task-issue`; otherwise both packages are discovered, the stale copy keeps resolving, and `$task-issue-harness` invocations do not migrate. Update existing invocations to `$task-issue`.
+
 These examples refuse to replace an existing installation. Use your runtime's configured path if different. Refresh or reopen the agent session as required, and confirm the skill is listed before relying on automatic selection. Every package includes `LICENSE` and `NOTICE` and works without sibling skills, the original working directory or a mandatory MCP server. Installation is manual; no global agent configuration is modified.
 
 ## Usage
 
 ```text
-Use $task-issue-harness to prepare Task Issue drafts only for this requirement.
-Use $task-issue-harness to implement the approved Issue using its existing authorization.
+Use $task-issue to prepare Task Issue drafts only for this requirement.
+Use $task-issue to implement the approved Issue using its existing authorization.
 Use $py2rust to assess a first Python-to-Rust unit; do not implement yet.
 Use $pr-review to review this PR locally without posting comments.
 ```

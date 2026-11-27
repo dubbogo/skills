@@ -1,5 +1,5 @@
 ---
-name: task-issue-harness
+name: task-issue
 description: Use when clarifying a software requirement, preparing GitHub Task Issues for another coding agent, or starting or resuming implementation from an approved Task Issue. 适用于需求核实、拆单、任务契约与编码交接；普通编码任务不自动套用完整 harness。
 license: Apache-2.0
 ---

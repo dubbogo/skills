@@ -6,7 +6,7 @@
 
 | 技能 | 入口保留 | 按需资料 |
 |---|---|---|
-| task-issue-harness | 分析者 → Task Issue → coding agent 的交接、批准与执行模式 | 输入、规划、契约、编码、独立验证、检查点、完整 Issue 模板 |
+| task-issue | 分析者 → Task Issue → coding agent 的交接、批准与执行模式 | 输入、规划、契约、编码、独立验证、检查点、完整 Issue 模板 |
 | py2rust | 任意 Python 项目的范围核实、单元循环导航、真实 Rust 与安装验收 | 现状核实、工具所有权、差分、桥接、门禁、语义、状态和报告；PowerContext 仅作为可选案例 |
 | pr-review | 状态门禁、风险与证据、评论和收尾边界 | 保留 §0–§13 的协议分章、10 个 owner/repo 规则索引、诊断经验 |
 

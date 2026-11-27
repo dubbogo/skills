@@ -7,6 +7,7 @@
 ## Unreleased
 
 - Add three standalone skills for Task Issue handoff, Python-to-Rust optimization and PR review.
+- **Breaking:** rename the `task-issue-harness` skill to `task-issue`; remove the old installed directory and update `$task-issue-harness` invocations before upgrading.
 - Rename the pull request review skill to `pr-review`.
 - Rename the Python-to-Rust skill to `py2rust` and make its project settings repository-specific.
 - Split workflow references; preserve review rule IDs and index 10 repository profiles and historical diagnoses.

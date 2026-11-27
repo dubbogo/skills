@@ -12,7 +12,7 @@
 
 | 技能 | 使用场景 | 交付物 |
 |---|---|---|
-| [task-issue-harness](task-issue-harness/SKILL.md) | 核实需求、拆 Task Issue、执行已批准契约 | 可审阅的契约与带证据的编码交接 |
+| [task-issue](task-issue/SKILL.md) | 核实需求、拆 Task Issue、执行已批准契约 | 可审阅的契约与带证据的编码交接 |
 | [py2rust](py2rust/SKILL.md) | 分析或实施任意 Python 项目的 Python → Rust 单元 | 行为差分、原生路径、wheel 安装及性能证据 |
 | [pr-review](pr-review/SKILL.md) | PR 初审、更新复审、合并条件判断 | 当前快照的问题及获授权的行内评论 |
 
@@ -25,7 +25,7 @@ Review 包含 10 个仓库的项目规则和历史诊断索引，分别匹配 fo
 克隆仓库后，将需要的技能**整个目录**复制到宿主支持的发现目录。例如，在克隆根目录执行：
 
 ```powershell
-$skillName = 'task-issue-harness'
+$skillName = 'task-issue'
 $skillRoot = Join-Path $env:USERPROFILE '.agents\skills'
 $destination = Join-Path $skillRoot $skillName
 if (Test-Path -LiteralPath $destination) { throw "Already installed: $destination" }
@@ -34,7 +34,7 @@ Copy-Item -LiteralPath (Join-Path (Get-Location) $skillName) -Destination $desti
 ```
 
 ```sh
-skill_name=task-issue-harness
+skill_name=task-issue
 skill_root="$HOME/.agents/skills"
 mkdir -p "$skill_root"
 if [ -e "$skill_root/$skill_name" ]; then
@@ -44,13 +44,15 @@ fi
 cp -R "./$skill_name" "$skill_root/$skill_name"
 ```
 
+**从 `task-issue-harness` 升级：** 本次发布重命名了技能目录。安装 `task-issue` 前先从技能根目录删除旧的 `task-issue-harness`；否则两个包会同时被主机发现，旧副本继续生效，`$task-issue-harness` 调用也不会迁移。现有调用需改为 `$task-issue`。
+
 目标已存在时示例会停止，避免覆盖旧安装。宿主使用其他路径时采用其实际配置；按宿主要求刷新或重开会话，先确认技能已列出。每个包自带 `LICENSE`、`NOTICE`，不依赖相邻技能、原工作目录或必需 MCP 服务。安装由用户选择执行，不自动改全局 agent 配置。
 
 ## 调用
 
 ```text
-使用 $task-issue-harness 核实需求，仅给出 Task Issue 草稿。
-使用 $task-issue-harness 执行已批准 Issue，沿用有效的权限与执行模式。
+使用 $task-issue 核实需求，仅给出 Task Issue 草稿。
+使用 $task-issue 执行已批准 Issue，沿用有效的权限与执行模式。
 使用 $py2rust 分析首个 Python 项目候选单元，先不实施。
 使用 $pr-review 审查这个 PR，仅本地报告，不发评论。
 ```
