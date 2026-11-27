@@ -44,6 +44,8 @@ fi
 cp -R "./$skill_name" "$skill_root/$skill_name"
 ```
 
+**Upgrading from `task-issue-harness`:** this release renames the skill directory. Remove the old `task-issue-harness` directory from your skill root before installing `task-issue`; otherwise both packages are discovered, the stale copy keeps resolving, and `$task-issue-harness` invocations do not migrate. Update existing invocations to `$task-issue`.
+
 These examples refuse to replace an existing installation. Use your runtime's configured path if different. Refresh or reopen the agent session as required, and confirm the skill is listed before relying on automatic selection. Every package includes `LICENSE` and `NOTICE` and works without sibling skills, the original working directory or a mandatory MCP server. Installation is manual; no global agent configuration is modified.
 
 ## Usage

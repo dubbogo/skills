@@ -44,6 +44,8 @@ fi
 cp -R "./$skill_name" "$skill_root/$skill_name"
 ```
 
+**从 `task-issue-harness` 升级：** 本次发布重命名了技能目录。安装 `task-issue` 前先从技能根目录删除旧的 `task-issue-harness`；否则两个包会同时被主机发现，旧副本继续生效，`$task-issue-harness` 调用也不会迁移。现有调用需改为 `$task-issue`。
+
 目标已存在时示例会停止，避免覆盖旧安装。宿主使用其他路径时采用其实际配置；按宿主要求刷新或重开会话，先确认技能已列出。每个包自带 `LICENSE`、`NOTICE`，不依赖相邻技能、原工作目录或必需 MCP 服务。安装由用户选择执行，不自动改全局 agent 配置。
 
 ## 调用

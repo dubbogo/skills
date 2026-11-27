@@ -7,6 +7,7 @@
 ## 尚未发布
 
 - 新增任务 Issue 交接、Python 项目 Rust 优化、工程化 PR 审查三个独立技能。
+- **破坏性变更**：将 `task-issue-harness` 技能重命名为 `task-issue`；升级前需删除旧安装目录，并将 `$task-issue-harness` 调用改为 `$task-issue`。
 - 将 PR 审查技能重命名为 `pr-review`。
 - 将 Python → Rust 技能命名为 `py2rust`，并将项目配置改为按目标仓库核实。
 - 拆分参考流程，保留审查规则 ID，索引 10 个仓库规则及历史诊断。
