@@ -15,6 +15,9 @@ MARKDOWN = MarkdownIt("commonmark")
 # Inspect rejected URI schemes as data too; this parser never renders or fetches links.
 MARKDOWN.validateLink = lambda _url: True
 
+# Required by this validator for standalone distribution, so they need no inbound link.
+UNREFERENCED_ALLOWED = frozenset({"LICENSE", "NOTICE", "agents/openai.yaml"})
+
 
 def markdown_links(text):
     for token in MARKDOWN.parse(text):
@@ -41,6 +44,43 @@ def prose_lines(text):
             yield line
     if fence:
         raise ValueError("unclosed Markdown fence")
+
+
+def local_target(document, destination, package):
+    """Resolve a Markdown destination to an existing file inside the package, or None."""
+    parsed = urlsplit(destination)
+    if parsed.scheme or parsed.netloc:
+        return None
+    path = unquote(parsed.path)
+    if not path or PureWindowsPath(destination).drive or path.startswith("/"):
+        return None
+    target = (document.parent / path).resolve()
+    if not target.is_relative_to(package):
+        return None
+    if target.is_dir():
+        for name in ("index.md", "SKILL.md"):
+            if (target / name).is_file():
+                return target / name
+        return None
+    return target if target.is_file() else None
+
+
+def reachable_files(package):
+    """Collect files an installed agent can reach by following local Markdown links."""
+    reached = set()
+    pending = [package / "SKILL.md"]
+    while pending:
+        current = pending.pop()
+        if current in reached or not current.is_file():
+            continue
+        reached.add(current)
+        if current.suffix.lower() != ".md":
+            continue
+        for destination in markdown_links(current.read_text(encoding="utf-8")):
+            target = local_target(current, destination, package)
+            if target is not None:
+                pending.append(target)
+    return reached
 
 
 def validate(root):
@@ -127,6 +167,16 @@ def validate(root):
                     raise ValueError("implicit invocation unexpectedly disabled")
             except (ValueError, TypeError, KeyError, yaml.YAMLError) as exc:
                 errors.append(f"{ui.relative_to(root)}: {exc}")
+    for entry in entries:
+        package = entry.parent
+        reached = reachable_files(package)
+        for path in sorted(package.rglob("*")):
+            relative = path.relative_to(package).as_posix()
+            if not path.is_file() or any(part.startswith(".") for part in relative.split("/")):
+                continue
+            if relative in UNREFERENCED_ALLOWED or path in reached:
+                continue
+            errors.append(f"{package.name}: unreferenced file: {relative}")
     for document in sorted(root.rglob("*.md")):
         relative = document.relative_to(root)
         if any(part.startswith(".") and part != ".github" for part in relative.parts):
@@ -179,7 +229,8 @@ def main():
         print(f"Validation failed: {len(errors)} error(s)")
         return 1
     print(
-        f"PASS: {len(list(args.root.glob('*/SKILL.md')))} skill packages; YAML, distribution files, fences and local link targets"
+        f"PASS: {len(list(args.root.glob('*/SKILL.md')))} skill packages; YAML, distribution files, "
+        "fences, local link targets and unreferenced files"
     )
     return 0
 

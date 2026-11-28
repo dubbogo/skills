@@ -57,7 +57,8 @@ class PackageValidationTests(unittest.TestCase):
 
     def test_example_links_in_code_are_not_resolved(self):
         self.write_skill(
-            '```markdown\n[output](future-report.md)\n```\nCall `attributes["execute"](revision)` or show `[example](future.md)`.\n'
+            "Read [details](references/details.md).\n\n```markdown\n[output](future-report.md)\n```\n"
+            'Call `attributes["execute"](revision)` or show `[example](future.md)`.\n'
         )
         self.assertEqual([], validate(self.root))
 
@@ -117,6 +118,35 @@ class PackageValidationTests(unittest.TestCase):
             with self.subTest(config=config):
                 ui.write_text(yaml.safe_dump(config), encoding="utf-8")
                 self.assertTrue(validate(self.root))
+
+    def test_unreferenced_file_is_reported(self):
+        (self.skill / "references/unused.md").write_text("# Unused\n", encoding="utf-8")
+        self.assertTrue(
+            any("unreferenced" in error and "unused.md" in error for error in validate(self.root))
+        )
+
+    def test_transitive_reference_is_not_unreferenced(self):
+        (self.skill / "references/deep.md").write_text("# Deep\n", encoding="utf-8")
+        (self.skill / "references/details.md").write_text(
+            'Read [deep](deep.md "detail").\n', encoding="utf-8"
+        )
+        self.assertEqual([], validate(self.root))
+
+    def test_distribution_metadata_needs_no_inbound_link(self):
+        ui = self.skill / "agents/openai.yaml"
+        ui.parent.mkdir()
+        ui.write_text(
+            yaml.safe_dump(
+                {
+                    "interface": {
+                        "default_prompt": "$sample-skill review this package",
+                        "short_description": "Validate one sample skill package.",
+                    }
+                }
+            ),
+            encoding="utf-8",
+        )
+        self.assertEqual([], validate(self.root))
 
     def test_skill_directory_without_entrypoint_is_reported(self):
         (self.skill / "SKILL.md").unlink()

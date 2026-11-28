@@ -30,14 +30,22 @@
 
 ## 结构与工具检查
 
-- `python scripts/validate.py`：检查三个包的名称、YAML、UI 调用、独立分发文件、Markdown 围栏、CommonMark 链接目标、机器路径与显式规则/经验索引锚点，拒绝文档内重复显式锚点。使用 Markdown 解析器覆盖带标题和引用式链接；不校验通用标题锚点。无网络、无产品执行。
-- `python -m unittest discover -s tests -v`：真实临时目录验证合法包、缺引用、逃逸包目录、目录/名称错配、未关闭围栏、代码示例不应被当链接、缺许可证、重复显式锚点、错误规则锚点、带标题/引用式链接、机器路径、许可证漂移、错误 UI 元数据、缺入口和独立 zip 分发，共 17 项。每个新增校验先以失败夹具观察失败，再修正通过。
+- `python scripts/validate.py`：检查三个包的名称、YAML、UI 调用、独立分发文件、Markdown 围栏、CommonMark 链接目标、机器路径与显式规则/经验索引锚点，拒绝文档内重复显式锚点，并拒绝包内没有被任何 Markdown 链接到达的文件（`LICENSE`、`NOTICE`、`agents/openai.yaml` 为校验器要求的分发文件，豁免）。使用 Markdown 解析器覆盖带标题和引用式链接；不校验通用标题锚点。无网络、无产品执行。
+- `python -m unittest discover -s tests -v`：真实临时目录验证合法包、缺引用、逃逸包目录、目录/名称错配、未关闭围栏、代码示例不应被当链接、缺许可证、重复显式锚点、错误规则锚点、带标题/引用式链接、机器路径、许可证漂移、错误 UI 元数据、缺入口、独立 zip 分发、未引用文件、传递引用与分发元数据豁免，共 22 项。每个新增校验先以失败夹具观察失败，再修正通过。
 - `python -m pip check`、`python -m ruff check scripts tests`、`python -m ruff format --check scripts tests`：依赖一致性、静态错误和 Python 格式门禁。
 - `python -m scripts.package --output-dir dist`：先校验源包，再为每个技能生成 zip、解压复验文件内容、独立校验、生成 `SHA256SUMS`；CI 在 Linux/Windows × Python 3.11/3.14 四个组合上传分发物，保留七天。禁止符号链接、路径逃逸和校验前生成部分产物。
 - skill-creator 自带 `quick_validate.py`：额外检查三份入口格式；它不验证行为。
 - 分发副本：将技能复制到独立临时根再校验，核对完整许可证，不依赖原工作台或 sibling 包。
 - `git diff --check`、固定来源摘要、协议 R ID 与 R-PC ID 对账，避免遗漏或改变历史验证日期。源文继承的 R-PC43/44/45 重号保留，但索引使用唯一后缀锚点并要求标题消歧。
 - 英文 LICENSE 与官方文本归一化换行后逐字比较。Action 引用从对应官方仓库 tag 查询得到固定 commit。
+
+## 未引用文件检查（2026-11-28）
+
+动机：安装后的 agent 只读入口能链接到的资源，包内无人引用的文件既随分发物一起分发，也会掩盖“文档声明了、包里没有”这类不同步缺陷。孤儿文件在结构上合法，旧校验器不会报错。
+
+实现边界：从 `SKILL.md` 出发沿 CommonMark 链接与图片做可达性遍历，目录链接落到 `index.md` 或 `SKILL.md`；隐藏文件与目录、`LICENSE`、`NOTICE`、`agents/openai.yaml` 不要求入链。仍不跟进 HTML `<a href>`（当前仓内 0 处）与纯文本提及的文件名，这两种只能人工核对。
+
+本地结果：`scripts/validate.py` 三个包 PASS（pr-review 44 个文件、py2rust 19、task-issue 17，均无孤儿）；`unittest` 22 项通过；`ruff check` 与 `ruff format --check` 通过。远端 CI 结果以推送后的 run 为准。
 
 ## 尚未覆盖
 
